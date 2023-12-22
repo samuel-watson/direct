@@ -302,11 +302,11 @@ template <typename T>
 template<auto Function, typename Class, typename>
 inline void direct<T>::fn(Class* cls)
 {
- optim_instance = cls;
- optim_fn = static_cast<func>(const void* p, std::vector<T>& vec) -> T{
+  optim_instance = cls;
+  optim_fn = static_cast<func>([](const void* p, std::vector<T>& vec) -> T {
    auto* c = const_cast<Class*>(static_cast<const Class*>(p));
    return std::invoke(Function,c,vec);
- }
+  });
 }
 
 template <typename T>
