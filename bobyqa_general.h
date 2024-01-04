@@ -888,7 +888,7 @@ bobyqb(const INTEGER n, const INTEGER npt,
             "    Function number%6ld    F =%18.10E"
             "    The corresponding X is:\n",
             (long)nf, (double)f);
-   #elif
+   #else
     Rprintf("    Function number%6ld    F =%18.10E"
             "    The corresponding X is:\n",
             (long)nf, (double)f);
@@ -1212,7 +1212,7 @@ bobyqb(const INTEGER n, const INTEGER npt,
       if (iprint >= 3) {
   #ifndef R_BUILD
         fprintf(OUTPUT, "\n");
-  #elif
+  #else
         Rprintf("\n");
   #endif
       }
@@ -1223,7 +1223,7 @@ bobyqb(const INTEGER n, const INTEGER npt,
               "    Least value of F =%23.15E     "
               "    The corresponding X is:\n",
               (double)rho, (long)nf, (double)fval[kopt]);
-  #elif
+  #else
       Rprintf(  "\n"
                 "    New RHO =%11.4E "
                 "    Number of function values =%6ld\n"
@@ -1266,7 +1266,7 @@ bobyqb(const INTEGER n, const INTEGER npt,
             "    Least value of F =%23.15E     "
             "    The corresponding X is:\n",
             (long)nf, (double)f);
-  #elif
+  #else
     Rprintf(  "\n"
               "    At the return from BOBYQA "
               "    Number of function values =%6ld\n"
@@ -1811,7 +1811,7 @@ prelim(const INTEGER n, const INTEGER npt,
       #ifndef R_BUILD
       fprintf(OUTPUT, "Function number%6ld    F = %.18G"
               "    The corresponding X is: ", (long)*nf, (double)f);
-      #elif
+      #else
       Rprintf(  "Function number%6ld    F = %.18G"
                 "    The corresponding X is: ", (long)*nf, (double)f);
       #endif
@@ -1819,13 +1819,13 @@ prelim(const INTEGER n, const INTEGER npt,
       LOOP(i,n) {
         #ifndef R_BUILD
         fprintf(OUTPUT, " %15.6E", x[i]);
-        #elif
+        #else
         Rprintf(" %15.6E", x[i]);
         #endif
       }
       #ifndef R_BUILD
       fprintf(OUTPUT, "\n");
-      #elif
+      #else
       Rprintf("\n");
       #endif
     }
@@ -2328,7 +2328,7 @@ rescue(const INTEGER n, const INTEGER npt,
               "    F =%18.10E"
               "    The corresponding X is:\n",
               (long)*nf, (double)f);
-      #elif
+      #else
       Rprintf("    Function number%6ld"
               "    F =%18.10E"
               "    The corresponding X is:\n",
@@ -2959,7 +2959,7 @@ print_error(const char* reason)
 {
   #ifndef R_BUILD
   fprintf(stderr, "\n    Return from BOBYQA because %s.\n", reason);
-  #elif
+  #else
   Rprintf("\n    Return from BOBYQA because %s.\n", reason);
   #endif
 }
@@ -2977,19 +2977,19 @@ print_x(FILE* output, const INTEGER n, const REAL x[], const REAL dx[])
     if (k == 0) {
       #ifndef R_BUILD
       fprintf(output, "  ");
-      #elif
+      #else
       Rprintf("  ");
       #endif
     }
     #ifndef R_BUILD
     fprintf(output, "%15.6E", (dx == NULL ? x[i] : x[i] + dx[i]));
-    #elif
+    #else
     Rprintf("%15.6E", (dx == NULL ? x[i] : x[i] + dx[i]));
     #endif
     if (i == n - 1 || k == 4) {
       #ifndef R_BUILD
       fprintf(output, "\n");
-      #elif
+      #else
       Rprintf("\n");
       #endif
     }
